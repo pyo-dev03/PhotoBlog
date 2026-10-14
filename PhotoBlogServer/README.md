@@ -69,7 +69,7 @@ python socket_server/socket_server.py   # 127.0.0.1:8000, 수신 요청을 socke
 ## PythonAnywhere 배포
 
 ```bash
-git clone https://github.com/vyjsjs/PhotoBlog.git
+git clone https://github.com/pyo-dev03/PhotoBlog.git
 cd PhotoBlog/PhotoBlogServer
 python3.13 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
@@ -78,4 +78,4 @@ python manage.py createsuperuser
 ```
 Web 탭 : Manual configuration (Python 3.13), Virtualenv `~/PhotoBlog/PhotoBlogServer/venv`,
 Static `/static/` → `~/PhotoBlog/PhotoBlogServer/staticfiles`, `/media/` → `~/PhotoBlog/PhotoBlogServer/media`,
-WSGI 파일에서 `path = '/home/vyjsjs/PhotoBlog/PhotoBlogServer'`, `DJANGO_SETTINGS_MODULE = 'mysite.settings'`.
+WSGI 파일에서 `path = '/home/pyo-dev03/PhotoBlog/PhotoBlogServer'`, `DJANGO_SETTINGS_MODULE = 'mysite.settings'`.
