@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+    <div class="page-header">
+        <div class="top-menu">
+            {% if user.is_authenticated %}
+                <span class="user-name">{{ user.username }}</span>
+                <a href="{% url 'post_new' %}" title="새 게시물"><span class="glyphicon glyphicon-plus"></span></a>
+                <form method="post" action="{% url 'admin:logout' %}" class="inline-form">
+                    {% csrf_token %}
+                    <button type="submit" class="link-button" title="로그아웃"><span class="glyphicon glyphicon-log-out"></span></button>
+                </form>
+            {% else %}
+                <a href="{% url 'admin:login' %}?next={{ request.path }}" title="로그인"><span class="glyphicon glyphicon-lock"></span></a>
+            {% endif %}
+        </div>
+        <h1><a href="/">Photo blog</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
